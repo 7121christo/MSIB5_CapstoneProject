@@ -6,7 +6,7 @@ Produk Fashionable Ramah Lingkungan"
 Deskripsi singkat aplikasi: Website untuk memperkenalkan produk Coconut Husk Bag Aromatherapy sekaligus pemberdayaan dalam bidang Digital Enterpreneurship dan memperluas jaringan pemasaran.
 
 Daftar anggota:
-1. Christophorus Adyatma W.S.N. (Ketua) 
+1. Christophorus Adyatma W.S.N. (PM) 
 2. Ananda Feri Setyawan
 3. Marcellinus Aditya V.D.
 4. Ahmad Rizky Febianto 
