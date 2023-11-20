@@ -11,11 +11,46 @@
           <a class="nav-link navlist-font" aria-current="page" href="#">Home</a>
           <a class="nav-link navlist-font" href="#">Shop</a>
           <a class="nav-link navlist-font" href="#">About</a>
-          <a class="nav-link navlist-font" href="#" >Sign Up</a>
+          @guest
+          <a class="nav-link navlist-font" href="{{route('register')}}" >Sign Up</a>
+          
+              
+          @else
+          <a class="nav-link navlist-font" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+          </a>
+            
+              
+              <div class="dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle navlist-font" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  @auth
+                  {{ Auth::user()->name }}
+                  @endauth
+                </a>
+              
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#"><i class="fa fa-user me-3" aria-hidden="true"> </i>Profile </a></li>
+                  <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-cart me-3" aria-hidden="true"></i>Cart</a></li>
+                  <li><a class="dropdown-item" href="#"><i class="fa fa-history me-3" aria-hidden="true"></i>Transaction</a></li>
+                </ul>
+              </div>
+           
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            
+            
+          
+          
+          @endguest
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="What are you looking for?" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
           </form>
+          
         </div>
       </div>
       
