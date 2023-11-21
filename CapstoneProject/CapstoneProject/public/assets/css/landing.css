@@ -1,0 +1,41 @@
+.body {
+    background-color: #ecf3fc;
+}
+
+.body-content {
+    background-color: white;
+    width: 640px;
+    height: 100vh;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.container {
+    padding: 1.4rem 7%;
+}
+
+.navbar-brand {
+    color: #2d2d39;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.nav-item a {
+    color: #2d2d39;
+    font-weight: 600;
+}
+
+/* .navbar-nav {
+    min-width: 100vh;
+} */
+
+.content a {
+    text-decoration: none;
+}
+
+.link-media .content a i {
+    color: #2d2d39;
+}
