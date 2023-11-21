@@ -72,7 +72,7 @@
           </div>
           <div class="row mb-4">
             <div class="col-md-8 d-grid gap-2">
-                <a href="#" class="btn btn-light btn-lg text-dark form-button border border-black">
+                <a href="{{ route('google.redirect')}}" class="btn btn-light btn-lg text-dark form-button border border-black">
                     <i class="fab fa-google " style="margin-right: 5px;"></i>
                     {{ __('Sign up with Google') }}
                 </a>
