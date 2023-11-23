@@ -72,6 +72,7 @@ class ProductsController extends Controller
 
     public function update(Request $request, Products $products,string $id)
     {
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'price' => 'required|integer',
@@ -80,12 +81,7 @@ class ProductsController extends Controller
             'stock' => 'required|integer',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()
-                ->route('products')
-                ->withErrors($validator)
-                ->withInput();
-        }
+        // dd($request->all());
 
         $products = Products::findOrFail($id);
         $products->name = $request->input('name');

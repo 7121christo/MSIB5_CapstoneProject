@@ -14,7 +14,7 @@
 
                     <div class="form-group mb-3">
                         <label for="name">Product Name</label>
-                        <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $item->name) }}" required>
+                        <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $item->name) }}" >
                     </div>
 
                     <div class="form-group mb-3">
