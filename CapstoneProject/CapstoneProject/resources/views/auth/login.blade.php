@@ -10,6 +10,28 @@
         <form method="POST" action="{{ route('login') }}">
 
           @csrf
+          @if (session()->has('message'))
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <h5>{{ session('message') }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+           @endif
+
+           @if (session()->has('success'))
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <h5>{{ session('success') }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+           @endif
+           
           <h1>Log in</h1>
           <p class="navlist-font" style="margin-top: 25px;"> Enter your details below</p>
 
@@ -64,9 +86,20 @@
                   </button>
               </div>
           </div>
+          @if (Route::has('password.request'))
+            <div class="row mb-4">
+                <div class="col-md-9 d-grid gap-2">
+                    <a class="navlist-font text-center" href="{{ route('password.request') }}">
+                        {{ __('Forgot Your Password?') }}
+                   </a>
+                    
+                </div>
+            </div>
+                 
+         @endif
           
             <div class="row mb-4">
-                <div class="col-md-8 d-grid gap-2">
+                <div class="col-md-9 d-grid gap-2">
                     <p class="navlist-font text-center">Don't have account? <a href="{{route('register')}}">Sign Up</a></p>
                     
                 </div>

@@ -79,7 +79,7 @@
             </div>
             </div>
             <div class="row mb-4">
-                <div class="col-md-8 d-grid gap-2">
+                <div class="col-md-9 d-grid gap-2">
                     <p class="navlist-font text-center">Already have account? <a href="{{route('login')}}">Log in</a></p>
                     
                 </div>

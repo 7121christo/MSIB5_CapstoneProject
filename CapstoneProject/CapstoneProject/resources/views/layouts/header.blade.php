@@ -2,13 +2,13 @@
   
 <nav class="navbar navbar-expand-lg  bg-white mt-3">
     <div class="container">
-      <a class="navbar-brand nav-font fs-3 mb-3" href="#">Coconut Husk Bag</a>
-      <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand nav-font fs-3 mb-3" href="">Coconut Husk Bag</a>
+      <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="collapse navbar-collapse" id="navbarToggler" >
         <div class="navbar-nav ms-auto me-auto">
-          <a class="nav-link navlist-font" aria-current="page" href="#">Home</a>
+          <a class="nav-link navlist-font" aria-current="page" href="{{route('home')}}" >Home</a>
           <a class="nav-link navlist-font" href="#">Shop</a>
           <a class="nav-link navlist-font" href="#">About</a>
           @guest
@@ -16,7 +16,7 @@
           
               
           @else
-          <a class="nav-link navlist-font" href="{{ route('logout') }}"
+          <a class="nav-link navlist-font text-danger fw-bold" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
@@ -34,6 +34,10 @@
                   <li><a class="dropdown-item" href="#"><i class="fa fa-user me-3" aria-hidden="true"> </i>Profile </a></li>
                   <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-cart me-3" aria-hidden="true"></i>Cart</a></li>
                   <li><a class="dropdown-item" href="#"><i class="fa fa-history me-3" aria-hidden="true"></i>Transaction</a></li>
+                  @if (Auth::user()->is_admin==1)
+                    <li><a class="dropdown-item" href="#"><i class="fa fa-lock me-3" aria-hidden="true"></i>Dashboard</a></li>
+                  @endif
+                  
                 </ul>
               </div>
            

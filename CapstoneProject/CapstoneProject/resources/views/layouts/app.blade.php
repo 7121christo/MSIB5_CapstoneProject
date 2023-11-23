@@ -21,7 +21,7 @@
     {{-- Font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400&family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&family=Montserrat:wght@400;600&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         .nav-font{
@@ -37,6 +37,49 @@
             font-size: 16px;
             margin-right: 48px;
             font-weight: 400;
+        }
+        
+        .jumbo{
+            margin: 250px 0 300px 0;
+        }
+        .jumbo h1{
+            
+            font-family: 'Poppins', sans-serif;
+            color: black;
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 96px;
+            
+        }
+        .jumbo p{
+            margin-top: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: black;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 24.38px;
+            
+        }
+
+        .collection{
+            margin: 600px 0 300px 0;
+        }
+        .collection h1{
+            
+            font-family: 'Montserrat', sans-serif;
+            color: black;
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 24.38px;
+            margin-bottom: 40px;
+            
+        }
+
+        .collection-product{
+            height: 473px;
+            width: 293px;
+            background-color: lightgray;
+            border-radius: 15px;
         }
         
         .footer-list ul li{
