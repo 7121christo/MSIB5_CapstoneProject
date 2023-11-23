@@ -15,7 +15,7 @@ use App\Http\Controllers\Auth\LoginGoogleController;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('home');
 });
 
 Auth::routes();
