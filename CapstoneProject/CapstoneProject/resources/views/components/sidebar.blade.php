@@ -4,7 +4,7 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-xl-center justify-content-md-between">
             <a href="#" class="mt-3 text-xl-center logo-img">
-                <img src="" width="180" alt="logo">
+                <h3 style="font-family: 'Helvetica Neue', sans-serif; color: #007bff;  font-weight: bold; text-shadow: -6px 5px 7px rgba(0, 0, 0, 0.3);">Coconut Husk Bag</h3>
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="fa-solid fa-xmark fa-2xl"></i>
@@ -16,12 +16,6 @@
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Home</span>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
-                        <i class="fa-solid fa-users fa-xl"></i>
-                        <span>User management</span>
-                    </a>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('products') }}">

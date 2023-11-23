@@ -47,9 +47,6 @@
                     </tbody>
                 </table>
             </div>
-            {{-- {{ $categories->Links() }} --}}
-        <!-- </div> -->
-    <!-- </div> -->
     @include('products.create')
     @include('products.update')
     @include('products.delete')

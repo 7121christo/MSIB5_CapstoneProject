@@ -22,7 +22,6 @@ use GuzzleHttp\Promise\Create;
 
 Route::controller(ProductsController::class)->group(function(){
     Route::get('/','index')->name('products');
-    // Route::get('/products/create', 'create')->name('products.create');
     Route::post('/products', 'store')->name('products.store');
     Route::put('/products/{id}', 'update')->name('products.update');
     Route::delete('/products/delete/{id}', 'destroy')->name('products.delete');
