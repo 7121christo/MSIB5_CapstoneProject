@@ -31,7 +31,7 @@
                         <label for="image">Image</label>
                         <input type="file" name="image" id="image" class="form-control">
                         @if ( $item->image )
-                            <input type="hidden" name="image" id="image" class="form-control" value="{{ 'image' ,$item->image }}">
+                            <input type="hidden" name="image" id="image" class="form-control" value="{{ old('image' ,$item->image) }}">
                             <p>Current image : {{ $item->image }}</p>
                         @endif
                     </div>
