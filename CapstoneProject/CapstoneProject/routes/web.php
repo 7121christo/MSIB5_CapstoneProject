@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Auth\LoginGoogleController;
 
 /*
@@ -14,15 +15,14 @@ use App\Http\Controllers\Auth\LoginGoogleController;
 |
 */
 
+
 Route::get('/', function () {
     return view('home');
 });
 Route::get('/cart', function (){
     return view('cart');
 });
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Login gooogle
