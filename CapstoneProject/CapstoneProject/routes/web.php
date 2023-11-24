@@ -17,6 +17,9 @@ use App\Http\Controllers\Auth\LoginGoogleController;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/cart', function (){
+    return view('cart');
+});
 
 Auth::routes();
 
