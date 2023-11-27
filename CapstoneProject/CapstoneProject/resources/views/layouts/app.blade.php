@@ -111,6 +111,12 @@
             font-weight: 400;
         }
 
+        .form-label{
+            font-family: 'Poppins', sans-serif;
+            color: black;
+            font-size: 16px;
+            font-weight: 400;
+        }
         .form-button{
             font-family: 'Poppins', sans-serif;
             color: black;
