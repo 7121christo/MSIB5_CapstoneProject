@@ -10,12 +10,12 @@ use Auth;
 class ProfileController extends Controller
 {
 
-    protected $profie;
+
 
     public function __construct(User $profile)
     {
-        // $this->middleware('auth');
-        $this->profile=$profile;
+        $this->middleware('auth');
+
     }
 
     public function index()
