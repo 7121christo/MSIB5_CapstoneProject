@@ -8,17 +8,33 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Auth;
 
 class ProductsController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('auth');
+        
+
+    }
+
     public function index()
     {
+        if(Auth::user()->is_admin!=1)
+        {
+            return redirect()->route('home');
+        }
         $products = Products::all();
         return view('products.index', compact('products'));
     }
 
     public function create()
     {
+        if(Auth::user()->is_admin!=1)
+        {
+            return redirect()->route('home');
+        }
         return view('products.create');
     }
 
