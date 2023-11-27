@@ -35,7 +35,7 @@
                   <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-cart me-3" aria-hidden="true"></i>Cart</a></li>
                   <li><a class="dropdown-item" href="#"><i class="fa fa-history me-3" aria-hidden="true"></i>Transaction</a></li>
                   @if (Auth::user()->is_admin==1)
-                    <li><a class="dropdown-item" href="#"><i class="fa fa-lock me-3" aria-hidden="true"></i>Dashboard</a></li>
+                    <li><a class="dropdown-item" href="{{route('products')}}"><i class="fa fa-lock me-3" aria-hidden="true"></i>Dashboard</a></li>
                   @endif
                   
                 </ul>
