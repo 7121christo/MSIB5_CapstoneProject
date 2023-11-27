@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
-use App\Products;
-use GuzzleHttp\Promise\Create;
+
+use App\Http\Controllers\Auth\LoginGoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +24,7 @@ Route::get('/cart', function (){
     return view('cart');
 });
 
+
 Route::controller(ProductsController::class)->group(function(){
     Route::get('/products','index')->name('products');
     Route::post('/products', 'store')->name('products.store');
@@ -33,10 +33,8 @@ Route::controller(ProductsController::class)->group(function(){
 });
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Login gooogle
 Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback'])->name('google.callback');
-
