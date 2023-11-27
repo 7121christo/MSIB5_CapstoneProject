@@ -20,9 +20,19 @@ use App\Http\Controllers\Auth\LoginGoogleController;
 Route::get('/', function () {
     return view('home');
 });
+
 Route::get('/cart', function (){
     return view('cart');
 });
+
+
+Route::controller(ProductsController::class)->group(function(){
+    Route::get('/products','index')->name('products');
+    Route::post('/products', 'store')->name('products.store');
+    Route::put('/products/{id}', 'update')->name('products.update');
+    Route::delete('/products/delete/{id}', 'destroy')->name('products.delete');
+});
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
