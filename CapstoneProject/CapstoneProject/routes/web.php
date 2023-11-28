@@ -25,6 +25,8 @@ Route::get('/cart', function (){
     return view('cart');
 });
 
+Route::get('/shop', [ProductsController::class, 'indexshop'])->name('indexshop');
+
 
 Route::controller(ProductsController::class)->group(function(){
     Route::get('/products','index')->name('products');
