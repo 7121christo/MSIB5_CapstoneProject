@@ -5,7 +5,7 @@
 
     <title>{{ config('app.name') }}</title>
     <!-- Scripts -->
-    <script src="{{ asset('assets/js/color-modes.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/color-modes.js') }}"></script> --}}
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
@@ -62,6 +62,13 @@
             
         }
 
+        .jumbo a button{
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            font-size: 36px;
+            font-weight: 600;
+            
+        }
         .collection{
             margin: 600px 0 300px 0;
         }

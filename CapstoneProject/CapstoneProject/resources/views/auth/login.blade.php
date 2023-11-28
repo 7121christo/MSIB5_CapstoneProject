@@ -3,9 +3,9 @@
 @section('content')
 <div class="container" style="margin-top: 100px;">
     <div class="row justify-content-start">
-      <div class="col" >
-        <div class="pic-image "><img src="" class="img-fluid" style="height:634; width: 568; size:100%;" alt=""></div>
-      </div>
+        <div class="col-8 col-md " >
+            <div class="pic-image justif-content-center "><img src="{{asset('assets/img/bag_img.jpg')}}" class="rounded mx-auto d-block" style="height:400; width: 568; size:100%; margin-top:95px;" alt=""></div>
+          </div>
       <div class="col register">
         <form method="POST" action="{{ route('login') }}">
 

@@ -7,10 +7,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarToggler" >
-        <div class="navbar-nav ms-auto me-auto">
+        <div class="navbar-nav ms-auto ">
           <a class="nav-link navlist-font" aria-current="page" href="{{route('home')}}" >Home</a>
           <a class="nav-link navlist-font" href="#">Shop</a>
-          <a class="nav-link navlist-font" href="#">About</a>
           @guest
           <a class="nav-link navlist-font" href="{{route('register')}}" >Sign Up</a>
           
@@ -50,10 +49,10 @@
           
           
           @endguest
-          <form class="d-flex" role="search">
+          {{-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="What are you looking for?" aria-label="Search">
             <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-          </form>
+          </form> --}}
           
         </div>
       </div>
