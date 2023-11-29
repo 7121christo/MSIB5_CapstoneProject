@@ -10,7 +10,7 @@
             <p class="col-10 d-flex ">Website to introduce Coconut Husk Bag Aromatherapy products as well as empowerment in the field of Digital Entrepreneurship and expanding marketing networks
                 Coconut Husk Bag itself is an aromatherapy bag product with a typical Jepara batik motif made from coconut husk as a fashionable, environmentally friendly product.
             </p>
-            <a href="" class="mt-3"><button type="button" class="btn btn-success "  style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.6rem; --bs-btn-font-size: 2rem;">Buy Now !</button></a>
+            <a href="{{route('indexshop')}}" class="mt-3"><button type="button" class="btn btn-success "  style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.6rem; --bs-btn-font-size: 2rem;">Buy Now !</button></a>
         </div>
         
     </div>
