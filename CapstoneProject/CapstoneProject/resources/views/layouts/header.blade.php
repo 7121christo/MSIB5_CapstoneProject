@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarToggler" >
         <div class="navbar-nav ms-auto ">
           <a class="nav-link navlist-font" aria-current="page" href="{{route('home')}}" >Home</a>
-          <a class="nav-link navlist-font" href="#">Shop</a>
+          <a class="nav-link navlist-font" href="{{route('indexshop')}}">Shop</a>
           @guest
           <a class="nav-link navlist-font" href="{{route('register')}}" >Sign Up</a>
           

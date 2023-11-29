@@ -19,6 +19,12 @@ class ProductsController extends Controller
 
     }
 
+    public function indexshop()
+    {
+        $products = Products::all();
+        return view('indexshop', compact('products'));
+    }
+
     public function index()
     {
         if(Auth::user()->is_admin!=1)
