@@ -7,14 +7,16 @@ use App\Models\Products;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Auth;
+//use Auth;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProductsController extends Controller
-{   
+{
     public function __construct()
     {
         $this->middleware('auth');
-        
+
     }
 
     public function indexshop()

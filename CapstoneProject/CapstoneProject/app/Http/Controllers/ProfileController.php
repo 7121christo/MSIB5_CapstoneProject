@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
-use Auth;
+//use Auth;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class ProfileController extends Controller
 {
@@ -19,9 +24,9 @@ class ProfileController extends Controller
     }
 
     public function index()
-    {
-        
-        return view('profile.index');
+    { $user= Auth::user();
+
+        return view('profile.index', compact ('user'));
     }
 
     public function update(ProfileRequest $request)

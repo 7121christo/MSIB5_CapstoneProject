@@ -7,8 +7,9 @@ use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DetailTransactionsController;
 
-
+use App\Models\DetailTransactions;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,3 +67,4 @@ Route::get('/order/{order}', [TransactionsController::class, 'show_order'])->nam
 
 Route::post('/transactions/{transactions}/pay', [TransactionsController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
 
+Route::get('/checkout', [DetailTransactionsController::class, 'index'])->name('co');

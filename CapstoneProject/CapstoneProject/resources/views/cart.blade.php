@@ -100,9 +100,9 @@
                 </div>
                 <div class="row pt-4">
                     <div class="col text-end">
-                        <form action="{{ route('cart.checkout') }}" method="POST">
+                <form action="{{ route('checkout') }}{{--{{ route('cart.checkout') }}  --}}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-muted px-4 py-2 rounded-0">Checkout</button>
+                            <button type="submit" class="btn btn-muted px-4 py-2 rounded-0" >Checkout</button>
                         </form>
                     </div>
                 </div>
