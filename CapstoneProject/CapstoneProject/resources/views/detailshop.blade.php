@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-around">
                             <div class="">
-                                <img src="{{ url('storage/' . $product->image) }}" alt="" width="200px">
+                                <img src="{{ asset('images/products/'. $product->image) }}" alt="image" width="200px" style="height: 200; padding-right:20px;">
                             </div>
                             <div class="">
                                 <h1>{{ $product->name }}</h1>

@@ -93,7 +93,7 @@ class ProductsController extends Controller
         //
     }
 
-<
+
     public function update(Request $request, Products $products, string $id)
 
     {

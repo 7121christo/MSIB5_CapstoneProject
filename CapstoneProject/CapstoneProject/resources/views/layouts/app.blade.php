@@ -136,6 +136,34 @@
             background-color: gray;
             size: 100%;
         }
+
+        .shop h1{
+            font-family: 'Inter', sans-serif;
+            color: black;
+            font-size: 36px;
+            font-weight: 700;
+            margin: 100px 0 30px 30px;
+            
+        }
+
+        .shop p {
+            font-family: 'Poppins', sans-serif;
+            color: black;
+            font-size: 16px;
+            font-weight: 400;
+            
+            
+        }
+
+        .shop button
+        {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+            
+            
+        }
         @media (min-width: 576px) { 
             .register{
             margin: 50px 0 0 100px;
