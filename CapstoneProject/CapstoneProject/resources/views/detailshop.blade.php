@@ -22,7 +22,7 @@
                                 @csrf
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control" aria-describedby="basic-addon2"
-                                                name="amount" value=1>
+                                                name="amount" value=1 min=1 max={{ $product->stock }}>
                                                 <div class="input-group-append">
                                                     <button class="btn btn-outline-secondary" type="submit">Add to Cart</button>
                                                 </div>
