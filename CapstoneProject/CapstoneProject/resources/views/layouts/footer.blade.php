@@ -23,23 +23,14 @@
       <div class="col mb-3  footer-list">
         
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">My Account</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Login/Register</a></li>
+          <li class="nav-item mb-2"><a href="{{route('profile')}}" class="nav-link p-0 text-body-secondary">My Account</a></li>
+          <li class="nav-item mb-2"><a href="{{route('register')}}" class="nav-link p-0 text-body-secondary">Login/Register</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Cart</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Wishlist</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Shop</a></li>
         </ul>
       </div>
   
-      <div class="col mb-3  footer-list">
-        
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Privacy Policy</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Term of Uses</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQ</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Contact</a></li>
-          
-        </ul>
+     
       </div>
     </footer>
   </div>

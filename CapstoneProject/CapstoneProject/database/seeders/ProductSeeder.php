@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Products;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
@@ -12,6 +11,7 @@ class ProductSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
     // public function run(): void
     // {
     //     $product = new Products();
@@ -50,5 +50,6 @@ class ProductSeeder extends Seeder
 
         // Insert data ke dalam tabel 'products'
         DB::table('products')->insert($products);
+
     }
 }

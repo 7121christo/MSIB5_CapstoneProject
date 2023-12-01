@@ -16,7 +16,7 @@
             return storedTheme;
         }
 
-        return window.matchMedia("(prefers-color-scheme: light)").matches
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
             ? "dark"
             : "light";
     };

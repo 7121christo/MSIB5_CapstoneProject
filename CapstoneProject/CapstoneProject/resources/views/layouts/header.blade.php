@@ -6,13 +6,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarToggler" >
-        <div class="navbar-nav ms-auto me-auto">
+        <div class="navbar-nav ms-auto ">
           <a class="nav-link navlist-font" aria-current="page" href="{{route('home')}}" >Home</a>
-          <a class="nav-link navlist-font" href="#">Shop</a>
 
-          <a class="nav-link navlist-font" href="{{ route('indexshop') }}">Shop</a>
+          <a class="nav-link navlist-font" href="{{route('indexshop')}}">Shop</a>
 
-          <a class="nav-link navlist-font" href="#">About</a>
           @guest
           <a class="nav-link navlist-font" href="{{route('register')}}" >Sign Up</a>
           @else
@@ -29,11 +27,11 @@
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#"><i class="fa fa-user me-3" aria-hidden="true"> </i>Profile </a></li>
+                  <li><a class="dropdown-item" href="{{route('profile')}}"><i class="fa fa-user me-3" aria-hidden="true"> </i>Profile </a></li>
                   <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-cart me-3" aria-hidden="true"></i>Cart</a></li>
                   <li><a class="dropdown-item" href="#"><i class="fa fa-history me-3" aria-hidden="true"></i>Transaction</a></li>
                   @if (Auth::user()->is_admin==1)
-                    <li><a class="dropdown-item" href="#"><i class="fa fa-lock me-3" aria-hidden="true"></i>Dashboard</a></li>
+                    <li><a class="dropdown-item" href="{{route('products')}}"><i class="fa fa-lock me-3" aria-hidden="true"></i>Dashboard</a></li>
                   @endif
 
                 </ul>
@@ -42,10 +40,12 @@
                     @csrf
                 </form>
           @endguest
-          <form class="d-flex" role="search">
+          {{-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="What are you looking for?" aria-label="Search">
             <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-          </form>
+
+          </form> --}}
+          
         </div>
       </div>
     </div>

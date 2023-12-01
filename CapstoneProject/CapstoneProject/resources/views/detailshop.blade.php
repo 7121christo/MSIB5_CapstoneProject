@@ -17,6 +17,7 @@
                                 <h3>Rp{{ $product->price }}</h3>
                                 <hr>
                                 <p>{{ $product->stock }} left</p>
+
                                 <form action="{{ route('cart.add', $product) }}" method="post">
                                 @csrf
                                     <div class="input-group mb-3">

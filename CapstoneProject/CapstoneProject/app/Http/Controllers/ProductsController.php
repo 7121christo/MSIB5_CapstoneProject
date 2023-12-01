@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Products;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Auth;
 
 class ProductsController extends Controller
-{
-    public function index()
+{   
+    public function __construct()
     {
-        $products = Products::all();
-        return view('products.index', compact('products'));
+        $this->middleware('auth');
+        
     }
 
     public function indexshop()
@@ -19,8 +23,23 @@ class ProductsController extends Controller
         return view('indexshop', compact('products'));
     }
 
+    public function index()
+    {
+        if(Auth::user()->is_admin!=1)
+        {
+            return redirect()->route('home');
+        }
+        $products = Products::all();
+        return view('products.index', compact('products'));
+    }
+
     public function create()
     {
+        if(Auth::user()->is_admin!=1)
+        {
+            return redirect()->route('home');
+        }
+
         return view('products.create');
     }
 
@@ -61,6 +80,7 @@ class ProductsController extends Controller
 
     public function show(string $id)
     {
+
         $product = Products::find($id);
         return view('detailshop', compact('product'));
     }
@@ -73,7 +93,9 @@ class ProductsController extends Controller
         //
     }
 
+<
     public function update(Request $request, Products $products, string $id)
+
     {
 
         $validator = Validator::make($request->all(), [
@@ -112,4 +134,5 @@ class ProductsController extends Controller
         $products->delete();
         return redirect()->route('products');
     }
+
 }
