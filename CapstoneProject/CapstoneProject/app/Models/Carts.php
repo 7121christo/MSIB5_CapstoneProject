@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +12,8 @@ class Carts extends Model
     protected $fillable = [
         'user_id',
         'product_id',
-        'amount'
+        'amount',
+        'total_price'
     ];
 
     public function user()

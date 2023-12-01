@@ -3,6 +3,12 @@
 @section('content')
 <div class="container pt-5 text-dark">
 
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
     <div class="card py-md-4 px-md-5 p-3">
         <div class="row fw-bolder">
             <div class="col-md-4">
@@ -23,53 +29,34 @@
         </div>
     </div>
 
-    <div class="card py-md-4 px-md-5 p-3">
+    @foreach($userCart as $cartItem)
+    <div class="card py-md-4 px-md-5 p-3" id="cart-item-{{ $cartItem->id }}">
         <div class="row">
             <div class="col-md-4 d-flex align-items-center">
-                Mini Distortion Hand Bag
+                {{ $cartItem->product->name }}
             </div>
             <div class="col-md-2 d-flex align-items-center text-center">
-                $650
+                Rp{{ $cartItem->product->price }}
+                <input type="hidden" class="product-price" value="{{ $cartItem->product->price }}">
             </div>
             <div class="col-md-3 d-flex justify-content-center">
-                <input type="number" class="form-control w-25" value="1" min="1">
+                <input type="number" class="form-control w-25 amount" value="{{ $cartItem->amount }}" min="1" data-cart-id="{{ $cartItem->id }}">
             </div>
-            <div class="col-md-2 d-flex align-items-center justify-content-end">
-                $650
+            <div class="col-md-2 d-flex align-items-center justify-content-end total_price">
+                Rp{{ $cartItem->total_price }}
             </div>
             <div class="col-md-1 d-flex align-items-center justify-content-end">
-                <button class="btn btn-sm btn-danger">
+                <button class="btn btn-sm btn-danger delete-cart-item" data-cart-id="{{ $cartItem->id }}">
                     Hapus
                 </button>
             </div>
         </div>
     </div>
-
-    <div class="card py-md-4 px-md-5 p-3">
-        <div class="row">
-            <div class="col-md-4 d-flex align-items-center">
-                Horssebit 1955
-            </div>
-            <div class="col-md-2 d-flex align-items-center text-center">
-                $550
-            </div>
-            <div class="col-md-3 d-flex justify-content-center">
-                <input type="number" class="form-control w-25" value="2" min="1">
-            </div>
-            <div class="col-md-2 d-flex align-items-center justify-content-end">
-                $1100
-            </div>
-            <div class="col-md-1 d-flex align-items-center justify-content-end">
-                <button class="btn btn-sm btn-danger">
-                    Hapus
-                </button>
-            </div>
-        </div>
-    </div>
+    @endforeach
 
     <div class="row py-4">
         <div class="col">
-            <button class="btn btn-light px-4 py-2 rounded-0 border border-dark">
+            <button class="btn btn-light px-4 py-2 rounded-0 border border-dark" href="{{ route('indexshop') }}">
                 Return to Shop
             </button>
         </div>
@@ -88,8 +75,8 @@
                     <div class="col">
                         Subtotal:
                     </div>
-                    <div class="col text-end">
-                        $1750
+                    <div class="col text-end" id="total_price">
+                        Rp0
                     </div>
                 </div>
                 <div class="row justify-content-between border-bottom border-secondary-subtle py-3">
@@ -104,13 +91,16 @@
                     <div class="col">
                         Total:
                     </div>
-                    <div class="col text-end">
-                        $1750
+                    <div class="col text-end" id="total">
+                        Rp0
                     </div>
                 </div>
                 <div class="row pt-4">
                     <div class="col text-end">
-                        <button class="btn btn-muted px-4 py-2 rounded-0">Checkout</button>
+                        <form action="{{ route('cart.checkout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-muted px-4 py-2 rounded-0">Checkout</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -118,4 +108,67 @@
     </div>
 </div>
 
-    @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Update amount on input change
+            $('.amount').change(function () {
+                var cartId = $(this).data('cart-id');
+                var amount = $(this).val();
+                var productPrice = $('#cart-item-' + cartId + ' .product-price').val();
+
+                $.ajax({
+                    url: '/cart/update/' + cartId,
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        amount: amount
+                    },
+                    success: function (data) {
+                        // Update amount
+                        $('#cart-item-' + cartId + ' .amount').val(data.amount);
+
+                        // Update total_price
+                        $('#cart-item-' + cartId + ' .total_price').text('$' + data.total_price);
+                    }
+                });
+                updateTotal();
+            });
+
+            // Delete item on button click
+            $('.delete-cart-item').click(function () {
+                var cartId = $(this).data('cart-id');
+
+                $.ajax({
+                    url: '/cart/delete/' + cartId,
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function () {
+                        // Remove the card element
+                        $('#cart-item-' + cartId).remove();
+                    }
+                });
+                updateTotal();
+            });
+
+            updateTotal();
+
+            function updateTotal() {
+                $.ajax({
+                    url: '/cart/total',
+                    type: 'GET',
+                    success: function (data) {
+                        // Update total_price
+                        $('#total_price').text('$' + data.total_price);
+
+                        // Update total
+                        $('#total').text('$' + data.total);
+                    }
+                });
+            }
+        });
+    </script>
+
+@endsection

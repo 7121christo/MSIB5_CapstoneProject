@@ -17,16 +17,16 @@
                                 <h3>Rp{{ $product->price }}</h3>
                                 <hr>
                                 <p>{{ $product->stock }} left</p>
-                                    <form action="" method="post">
-                                        @csrf
-                                        <div class="input-group mb-3">
-                                            <input type="number" class="form-control" aria-describedby="basic-addon2"
+
+                                <form action="{{ route('cart.add', $product) }}" method="post">
+                                @csrf
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" aria-describedby="basic-addon2"
                                                 name="amount" value=1>
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="submit">Add to
-                                                    cart</button>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="submit">Add to Cart</button>
+                                                </div>
                                             </div>
-                                        </div>
                                     </form>
                             </div>
                         </div>

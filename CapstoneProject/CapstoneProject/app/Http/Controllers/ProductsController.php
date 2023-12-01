@@ -7,7 +7,6 @@ use App\Models\Products;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Auth;
 
 class ProductsController extends Controller
@@ -16,7 +15,6 @@ class ProductsController extends Controller
     {
         $this->middleware('auth');
         
-
     }
 
     public function indexshop()
@@ -41,6 +39,7 @@ class ProductsController extends Controller
         {
             return redirect()->route('home');
         }
+
         return view('products.create');
     }
 
@@ -81,7 +80,9 @@ class ProductsController extends Controller
 
     public function show(string $id)
     {
-        //
+
+        $product = Products::find($id);
+        return view('detailshop', compact('product'));
     }
 
     /**
@@ -92,7 +93,9 @@ class ProductsController extends Controller
         //
     }
 
-    public function update(Request $request, Products $products,string $id)
+<
+    public function update(Request $request, Products $products, string $id)
+
     {
 
         $validator = Validator::make($request->all(), [
