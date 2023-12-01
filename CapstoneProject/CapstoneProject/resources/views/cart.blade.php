@@ -40,7 +40,7 @@
                 <input type="hidden" class="product-price" value="{{ $cartItem->product->price }}">
             </div>
             <div class="col-md-3 d-flex justify-content-center">
-                <input type="number" class="form-control w-25 amount" value="{{ $cartItem->amount }}" min="1" data-cart-id="{{ $cartItem->id }}">
+                <input type="number" class="form-control w-25 amount" value="{{ $cartItem->amount }}" min="1" max={{ $cartItem->product->stock }} data-cart-id="{{ $cartItem->id }}">
             </div>
             <div class="col-md-2 d-flex align-items-center justify-content-end total_price">
                 Rp{{ $cartItem->total_price }}
@@ -61,7 +61,7 @@
                     Return to Shop
                 </button>
             </a>
-            
+
         </div>
         {{-- <div class="col text-end">
             <button class="btn btn-light px-4 py-2 rounded-0 border border-dark">
