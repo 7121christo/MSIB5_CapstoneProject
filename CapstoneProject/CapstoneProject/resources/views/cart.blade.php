@@ -56,9 +56,12 @@
 
     <div class="row py-4">
         <div class="col">
-            <button class="btn btn-light px-4 py-2 rounded-0 border border-dark" href="{{ route('indexshop') }}">
-                Return to Shop
-            </button>
+            <a href="{{ route('indexshop') }}">
+                <button class="btn btn-light px-4 py-2 rounded-0 border border-dark" ">
+                    Return to Shop
+                </button>
+            </a>
+            
         </div>
         {{-- <div class="col text-end">
             <button class="btn btn-light px-4 py-2 rounded-0 border border-dark">
@@ -129,7 +132,7 @@
                         $('#cart-item-' + cartId + ' .amount').val(data.amount);
 
                         // Update total_price
-                        $('#cart-item-' + cartId + ' .total_price').text('$' + data.total_price);
+                        $('#cart-item-' + cartId + ' .total_price').text('Rp' + data.total_price);
                     }
                 });
                 updateTotal();
@@ -161,10 +164,10 @@
                     type: 'GET',
                     success: function (data) {
                         // Update total_price
-                        $('#total_price').text('$' + data.total_price);
+                        $('#total_price').text('Rp' + data.total_price);
 
                         // Update total
-                        $('#total').text('$' + data.total);
+                        $('#total').text('Rp' + data.total);
                     }
                 });
             }

@@ -28,7 +28,7 @@
 
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{{route('profile')}}"><i class="fa fa-user me-3" aria-hidden="true"> </i>Profile </a></li>
-                  <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-cart me-3" aria-hidden="true"></i>Cart</a></li>
+                  <li><a class="dropdown-item" href="{{route('cart.index')}}"><i class="fa fa-shopping-cart me-3" aria-hidden="true"></i>Cart</a></li>
                   <li><a class="dropdown-item" href="#"><i class="fa fa-history me-3" aria-hidden="true"></i>Transaction</a></li>
                   @if (Auth::user()->is_admin==1)
                     <li><a class="dropdown-item" href="{{route('products')}}"><i class="fa fa-lock me-3" aria-hidden="true"></i>Dashboard</a></li>

@@ -3,7 +3,7 @@
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-xl-center justify-content-md-between">
-            <a href="#" class="mt-3 text-xl-center logo-img">
+            <a href="{{route('home')}}" class="mt-3 text-xl-center logo-img">
                 <h3 style="font-family: 'Helvetica Neue', sans-serif; color: #007bff;  font-weight: bold; text-shadow: -6px 5px 7px rgba(0, 0, 0, 0.3);">Coconut Husk Bag</h3>
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
