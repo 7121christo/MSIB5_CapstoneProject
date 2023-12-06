@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                    <a class="sidebar-link" href="{{ route('vieworder') }}">
                         <i class="fa-solid fa-bag-shopping fa-2xl"></i>
                         <span>View Orders</span>
                     </a>
