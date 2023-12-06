@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Midtrans\Config;
 use App\Models\Carts;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Products;
 use App\Models\Transactions;
 use Illuminate\Http\Request;
+use App\Models\DetailTransactions;
+
 
 
 class TransactionsController extends Controller
@@ -78,6 +81,8 @@ class TransactionsController extends Controller
         $order = Carts::find($id);
         return view('invoice', compact('carts'));
     }
+
+
 
 
 
