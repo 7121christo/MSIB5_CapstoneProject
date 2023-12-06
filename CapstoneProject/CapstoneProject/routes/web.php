@@ -44,4 +44,14 @@ Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleC
 
 // Profile
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+
 Route::post('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+//transaction
+Route::get('/order/{order}', [TransactionsController::class, 'show_order'])->name('show_order');
+
+Route::post('/transactions/{transactions}/pay', [TransactionsController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
+
+Route::post('/checkout', [DetailTransactionsController::class, 'checkout'])->name('checkout');
+
+Route::get('/transaction', [TransactionsController::class, 'indextransaction'])->name('indextransaction');
