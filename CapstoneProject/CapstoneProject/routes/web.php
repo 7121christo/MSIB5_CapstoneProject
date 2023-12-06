@@ -67,4 +67,8 @@ Route::get('/order/{order}', [TransactionsController::class, 'show_order'])->nam
 
 Route::post('/transactions/{transactions}/pay', [TransactionsController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
 
-Route::get('/checkout', [DetailTransactionsController::class, 'index'])->name('co');
+
+Route::post('/checkout', [DetailTransactionsController::class, 'checkout'])->name('checkout');
+
+Route::get('/transaction', [TransactionsController::class, 'indextransaction'])->name('indextransaction');
+
