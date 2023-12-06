@@ -15,10 +15,34 @@ use App\Models\DetailTransactions;
 class TransactionsController extends Controller
 {
 
+
+
+    public function indextransaction()
+    {
+        $user = Auth::user();
+        $is_admin = $user->is_admin;
+        if($is_admin)
+        {
+
+            $orders = Transactions::all();
+        }
+        else
+        {
+            $orders = Transactions::where('user_id', $user->id)->get();
+        }
+        return view('indextransaction', compact('orders'));
+    }
+
+
     // public function checkout(){
     //     return view('checkout');
     // }
     public function show_order(){
+
+        $user = Auth::user();
+        $is_admin = $user->is_admin;
+
+
         return view('show_order', compact('transactions'));
     }
 
@@ -57,6 +81,9 @@ class TransactionsController extends Controller
         $order = Carts::find($id);
         return view('invoice', compact('carts'));
     }
+
+
+
 
 
 
