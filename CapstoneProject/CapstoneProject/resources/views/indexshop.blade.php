@@ -7,10 +7,10 @@
             <div class="col-md-12">
                 <div class="card border-0">
 
-                    <div class="card-group m-auto">
+                    <div class="card-group  justify-content-start">
                         <div class="row">
                         @foreach ($products as $product)
-                            <div class="card col-md-3 col-6 m-3 border-0" style="width: 18rem;">
+                            <div class="card col-md-3 col-6 m-3 border-0 " style="width: 18rem;">
                                 <img class="card-img-top rounded" {{--src="{{ url('storage/' . $product->image) }}"--}}src="{{ asset('images/products/'. $product->image) }}" alt="image"  width="200" style="height: 200;">
                                 
                                 <div class="card-body">
