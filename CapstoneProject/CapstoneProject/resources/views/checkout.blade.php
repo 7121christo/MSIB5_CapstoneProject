@@ -34,32 +34,34 @@
     <div class="container">
 
         <div class="card" style="width: 18rem;">
-            <img src="{{ asset('assets/img/tas.jpg') }}" class="card-img-top" alt="...">
+            {{-- <img src="{{ asset('assets/img/tas.jpg') }}" class="card-img-top" alt="..."> --}}
             <div class="card-body">
               <h5 class="card-title">Detail Pesanan</h5>
 
               <table>
                 <tr>
                     <td>Nama</td>
-                    <td> : {{ $user->name }}</td>
+                    <td> : {{ Auth::user()->name }}</td>
                 </tr>
                 <tr>
                     <td>No Hp</td>
-                    <td> : {{ $user->phone }}</td>
+                    <td> : {{ Auth::user()->phone }}</td>
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td> : {{ $user->address }}</td>
+                    <td> : {{ Auth::user()->address }}</td>
                 </tr>
-                <tr>
+
+                {{-- <tr>
                     <td>Qty</td>
                     <td> : {{ $totalAmount }}</td>
-                </tr>
+                </tr> --}}
                 <tr>
                     <td>Total Harga</td>
                     <td> : {{ $totalPrice }}</td>
                 </tr>
               </table>
+
 
 
 
@@ -70,11 +72,47 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     <div class="center-container">
         <div class="centered-content">
             <div id="snap-container"></div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        // For example trigger on button clicked, or any time you need
+        var payButton = document.getElementById('pay-button');
+        payButton.addEventListener('click', function () {
+          // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
+          // Also, use the embedId that you defined in the div above, here.
+        window.snap.embed('{{ $snapToken }}', {
+            embedId: 'snap-container',
+            onSuccess: function (result) {
+              /* You may add your own implementation here */
+              alert("payment success!"); console.log(result);
+            },
+            onPending: function (result) {
+              /* You may add your own implementation here */
+              alert("wating your payment!"); console.log(result);
+            },
+            onError: function (result) {
+              /* You may add your own implementation here */
+              alert("payment failed!"); console.log(result);
+            },
+            onClose: function () {
+              /* You may add your own implementation here */
+              alert('you closed the popup without finishing the payment');
+            }
+          });
+        });
+      </script>
+
+
+
+
+
+
+
     {{-- <script type="text/javascript">
         var payButton = document.getElementById('pay-button');
         payButton.addEventListener('click', function () {
@@ -101,7 +139,7 @@
         });
     </script> --}}
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         // For example trigger on button clicked, or any time you need
         var payButton = document.getElementById('pay-button');
         payButton.addEventListener('click', function () {
@@ -112,7 +150,7 @@
             onSuccess: function (result) {
               /* You may add your own implementation here */
               //alert("payment success!"); console.log(result);
-              window.location.href = '/invoice/{{ $transaction->id }}'
+              window.location.href = '/invoice/{{ $transactions->id }}'
               console.log(result);
             },
             onPending: function (result) {
@@ -129,7 +167,14 @@
             }
           });
         });
-      </script>
+      </script> --}}
+
+      <?php
+      use App\Models\Transactions;
+                $userId = Auth::user()->id;
+                $add = Transactions::create(['is_paid'=>0,'user_id'=>$userId]);
+
+              ?>
 @endsection
 
 

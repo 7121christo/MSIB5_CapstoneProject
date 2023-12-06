@@ -12,8 +12,8 @@ class CartController extends Controller
 {
     public function index()
     {
-        // $user_id = Auth::id();
-        $user_id = 1;
+        $user_id = Auth::id();
+        //$user_id = 1;
         $cartItems = Carts::where('user_id', $user_id)->get();
 
         $data = [
@@ -34,8 +34,8 @@ class CartController extends Controller
     public function addToCart(Request $request, Products $product)
     {
         $user = auth()->user();
-        // $userId = $user->id;
-        $userId = 1;
+        $userId = $user->id;
+        //$userId = 1;
 
         $existingCartItem = Carts::where('user_id', $userId)
             ->where('product_id', $product->id)
@@ -85,8 +85,8 @@ class CartController extends Controller
 
     public function getTotal()
     {
-        $userId = 1;
-        // $userId = auth()->id();
+        //$userId = 1;
+        $userId = auth()->id();
 
         $total_price = number_format(Carts::where('user_id', $userId)->sum('total_price'));
         $total = $total_price; // Anda dapat menambahkan biaya pengiriman atau biaya tambahan lainnya di sini
@@ -97,8 +97,8 @@ class CartController extends Controller
     public function checkout()
     {
         $user = auth()->user();
-        // $userId = $user->id;
-        $userId = 1;
+        $userId = $user->id;
+        //$userId = 1;
 
         // Ambil semua item keranjang untuk pengguna
         $cartItems = Carts::where('user_id', $userId)->get();
@@ -136,4 +136,3 @@ class CartController extends Controller
         }
     }
 }
-

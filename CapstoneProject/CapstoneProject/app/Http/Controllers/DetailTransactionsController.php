@@ -9,6 +9,7 @@ use App\Models\DetailTransactions;
 use App\Models\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Collection;
 
 
 class DetailTransactionsController extends Controller
@@ -34,20 +35,13 @@ class DetailTransactionsController extends Controller
     $transaction = Transactions::create([
         'invoice' => $user->name,
         'is_paid' => 0,
-        'user_id' => $user->id, 
+        'user_id' => $user->id,
     ]);
 
         return view('checkout', compact('user', 'cartItems', 'totalAmount', 'totalPrice'));
     }
 
     public function checkout(){
-
-
-
-
-    $user_id = Auth::id();
-    $carts = Carts::where('user_id', $user_id)->get();
-
     // Set your Merchant Server Key
     \Midtrans\Config::$serverKey = config('midtrans.server_key');
     // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -57,32 +51,35 @@ class DetailTransactionsController extends Controller
     // Set 3DS transaction for credit card to true
     \Midtrans\Config::$is3ds = true;
 
-    $totalAmount = 0;
-    $totalPrice = 0;
+    $user_id = Auth::id();
+    $carts = Carts::where('user_id', $user_id)->get();
+    $user= Auth::user();
 
-    foreach ($carts as $cart) {
-        $totalAmount += $cart->amount;
-        $totalPrice += $cart->total_price;
-    }
 
-    $order_id = $carts->first()->id;
+    $totalPrice = max(round($carts->sum('total_price')), 0.01);
+
+
 
     $params = array(
         'transaction_details' => array(
-            'order_id' => $order_id,
-            'gross_amount' => $totalPrice,
+            'order_id' => $carts->pluck('id')->first(),
+            'gross_amount' => (int)$totalPrice,
+            'currency' => 'IDR',
         ),
         'customer_details' => array(
-            'name' => Auth::user()->name,
-            'phone' => Auth::user()->phone,
+            'name' => $user->name,
+            'phone' => $user->phone,
         ),
     );
 
+    // dd($params);
+
     $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-    return view('checkout', compact('snapToken', 'carts', 'totalAmount', 'totalPrice'));
-}
 
 
+    return view('checkout', compact('snapToken','carts', 'totalPrice'));
 
+
+    }
 }
