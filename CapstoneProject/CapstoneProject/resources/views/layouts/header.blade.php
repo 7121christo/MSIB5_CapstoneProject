@@ -9,10 +9,11 @@
       <div class="collapse navbar-collapse" id="navbarToggler" >
         <div class="navbar-nav ms-auto ">
           <a class="nav-link navlist-font" aria-current="page" href="{{route('home')}}" >Home</a>
+
           <a class="nav-link navlist-font" href="{{route('indexshop')}}">Shop</a>
+
           @guest
           <a class="nav-link navlist-font" href="{{route('register')}}" >Sign Up</a>
-
 
           @else
           <a class="nav-link navlist-font text-danger fw-bold" href="{{ route('logout') }}"
@@ -20,7 +21,6 @@
                                  document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
           </a>
-
 
               <div class="dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle navlist-font" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -32,13 +32,16 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{{route('profile')}}"><i class="fa fa-user me-3" aria-hidden="true"> </i>Profile </a></li>
                   <li><a class="dropdown-item" href="{{route('cart.index')}}"><i class="fa fa-shopping-cart me-3" aria-hidden="true"></i>Cart</a></li>
+
                   <li><a class="dropdown-item" href="{{ route('indextransaction') }}"><i class="fa fa-history me-3" aria-hidden="true"></i>Transaction</a></li>
+
                   @if (Auth::user()->is_admin==1)
                     <li><a class="dropdown-item" href="{{route('products')}}"><i class="fa fa-lock me-3" aria-hidden="true"></i>Dashboard</a></li>
                   @endif
 
                 </ul>
               </div>
+
 
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -48,10 +51,12 @@
 
 
 
+
           @endguest
           {{-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="What are you looking for?" aria-label="Search">
             <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
           </form> --}}
 
         </div>

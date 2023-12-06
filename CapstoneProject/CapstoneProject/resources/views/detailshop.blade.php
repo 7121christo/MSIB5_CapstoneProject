@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-around">
                             <div class="">
-                                <img src="{{ url('storage/' . $product->image) }}" alt="" width="200px">
+                                <img src="{{ asset('images/products/'. $product->image) }}" alt="image" width="200px" style="height: 200; padding-right:20px;">
                             </div>
                             <div class="">
                                 <h1>{{ $product->name }}</h1>
@@ -17,16 +17,16 @@
                                 <h3>Rp{{ $product->price }}</h3>
                                 <hr>
                                 <p>{{ $product->stock }} left</p>
-                                    <form action="" method="post">
-                                        @csrf
-                                        <div class="input-group mb-3">
-                                            <input type="number" class="form-control" aria-describedby="basic-addon2"
-                                                name="amount" value=1>
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="submit">Add to
-                                                    cart</button>
+
+                                <form action="{{ route('cart.add', $product) }}" method="post">
+                                @csrf
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" aria-describedby="basic-addon2"
+                                                name="amount" value=1 min=1 max={{ $product->stock }}>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="submit">Add to Cart</button>
+                                                </div>
                                             </div>
-                                        </div>
                                     </form>
                             </div>
                         </div>

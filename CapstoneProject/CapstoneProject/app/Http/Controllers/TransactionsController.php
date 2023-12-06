@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Midtrans\Config;
+use App\Models\Carts;
+use App\Models\Products;
+use App\Models\Transactions;
 use Illuminate\Http\Request;
+
 
 class TransactionsController extends Controller
 {
+
 
 
     public function indextransaction()
@@ -24,10 +30,12 @@ class TransactionsController extends Controller
         return view('indextransaction', compact('orders'));
     }
 
+
     // public function checkout(){
     //     return view('checkout');
     // }
     public function show_order(){
+
         $user = Auth::user();
         $is_admin = $user->is_admin;
 
@@ -70,6 +78,7 @@ class TransactionsController extends Controller
         $order = Carts::find($id);
         return view('invoice', compact('carts'));
     }
+
 
 
 

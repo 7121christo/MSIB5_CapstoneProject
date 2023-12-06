@@ -15,10 +15,10 @@
                     <thead class="table-primary">
                         <tr class="h5">
                             <th>No.</th>
+                            <th>Image</th>
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Description</th>
-                            <th>Image</th>
                             <th>Stock</th>
                             <th>Action</th>
                         </tr>
