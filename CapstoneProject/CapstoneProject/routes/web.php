@@ -72,3 +72,4 @@ Route::post('/checkout', [DetailTransactionsController::class, 'checkout'])->nam
 Route::get('/transaction', [TransactionsController::class, 'indextransaction'])->name('indextransaction');
 
 
+Route::get('/products/transaction', [TransactionsController::class, 'indextransaction'])->name('vieworder');
