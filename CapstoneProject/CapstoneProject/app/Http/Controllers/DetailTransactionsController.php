@@ -70,6 +70,9 @@ class DetailTransactionsController extends Controller
     $transactionId = $transaction->id;
     $userId = $transaction->user_id;
 
+    // $transaction = Transactions::find($transactionId);
+    // $transaction->is_paid = 'Paid';
+    // $transaction->save();
     Transactions::where('id',$transactionId)->update(['is_paid' => 'Paid']);
 
     DetailTransactions::create([
