@@ -24,8 +24,8 @@ class ProfileController extends Controller
     }
 
     public function index()
-    { $user= Auth::user();
-
+    {
+        $user= Auth::user();
         return view('profile.index', compact ('user'));
     }
 
@@ -37,8 +37,7 @@ class ProfileController extends Controller
         $user->phone=$input['phone'];
         $user->address=$input['address'];
         $user->save();
-
-
+        
         return redirect()->route('profile')->with('profile_update', 'Profile updated!');
     }
 }
