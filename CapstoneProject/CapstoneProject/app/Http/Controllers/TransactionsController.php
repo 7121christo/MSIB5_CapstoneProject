@@ -55,7 +55,6 @@ class TransactionsController extends Controller
                 $change->is_paid = 'Paid';
                 $change->save();
 
-                // Debugging
                 dd('Change saved:', $change);
 
                 $user_id = Auth::id();
@@ -67,7 +66,6 @@ class TransactionsController extends Controller
                 $products = Carts::pluck('product_id');
                 $trans_id = Transactions::pluck('id');
 
-                // Debugging
                 dd('Creating DetailTransaction:', $totalPrice, $products->first(), $trans_id->first());
 
                 DetailTransactions::create([
@@ -80,7 +78,4 @@ class TransactionsController extends Controller
         }
     }
 }
-
-    
-
 }
