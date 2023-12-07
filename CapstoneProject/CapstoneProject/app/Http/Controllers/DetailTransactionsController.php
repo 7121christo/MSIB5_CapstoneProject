@@ -62,22 +62,17 @@ class DetailTransactionsController extends Controller
         $totalPrice += $productTotalPrice;
     }
 
-    $transaction = Transactions::create([
-        'invoice' => $user->name,
-        'is_paid' => 'Unpaid',
-        'user_id' => $user->id,
-    ]);
-    $transactionId = $transaction->id;
-    $userId = $transaction->user_id;
+    
+ 
+    // $userId = $transaction->user_id;
 
-    Transactions::where('id',$transactionId)->update(['is_paid' => 'Paid']);
 
-    DetailTransactions::create([
-        'total_amount' => (int)$totalPrice,
-        'product_id' => $cartItem->product_id,
-        'transaction_id' => $transactionId,
-        'user_id' => $userId
-    ]);
+    // DetailTransactions::create([
+    //     'total_amount' => (int)$totalPrice,
+    //     'product_id' => $cartItem->product_id,
+    //     'transaction_id' => $transactionId,
+    //     'user_id' => $userId
+    // ]);
 
     // Set your Merchant Server Key
     \Midtrans\Config::$serverKey = config('midtrans.server_key');
@@ -98,8 +93,10 @@ class DetailTransactionsController extends Controller
 
     $order_id = "user{$user_id}_cart{$cart_id}_" . Str::uuid();
 
+
     $params = array(
         'transaction_details' => array(
+        
             'order_id' => $order_id,
             'gross_amount' => (int)$totalPrice,
             'currency' => 'IDR',
@@ -113,9 +110,25 @@ class DetailTransactionsController extends Controller
         ]
     );
 
+
     $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-    // dd($snapToken);
+    $transaction = Transactions::create([
+        'invoice' => $user->name,
+        'is_paid' => 'Unpaid',
+        'user_id' => $user->id,
+        'order_id' => $order_id,
+    ]);
+
+    
+    // $change = Transactions::find($user_id);
+
+    // $change = Transactions::where('order_id', $order_id)->get();
+    // $change_paid = $change->pluck('id')->first();
+  
+    // $order = Transactions::find($change_paid);
+    // $order->update(['is_paid' => 'Paid']);
+
 
     return view('checkout', compact('snapToken','carts', 'totalPrice'));
     }

@@ -12,7 +12,8 @@ class Transactions extends Model
     protected $fillable = [
         'user_id',
         'is_paid',
-        'invoice'
+        'invoice',
+        'order_id',
     ];
 
     public function user()

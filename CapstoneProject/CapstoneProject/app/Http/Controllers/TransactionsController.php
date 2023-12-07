@@ -49,15 +49,22 @@ class TransactionsController extends Controller
 
     if ($hashed == $request->signature_key) {
         if ($request->transaction_status == 'capture') {
-            $change = Transactions::find($request->id);
+            // $change = Transactions::find($request->order_id);
+            $change = Transactions::where('order_id', $request->order_id)->get();
+            $change_paid_id = $change->pluck('id')->first();
 
-            if ($change) {
-                $change->is_paid = 'Paid';
-                $change->save();
+            $order = Transactions::find($change_paid_id);
+            $order->update(['is_paid' => 'Paid']);
+            // if ($change) {
+                
+               
 
-                dd('Change saved:', $change);
 
-                $user_id = Auth::id();
+                // Debugging
+                // dd('Change saved:', $change);
+
+
+                $user_id =  $change->pluck('user_id')->first();
                 $carts = Carts::where('user_id', $user_id)->get();
                 $user = Auth::user();
 
@@ -66,15 +73,19 @@ class TransactionsController extends Controller
                 $products = Carts::pluck('product_id');
                 $trans_id = Transactions::pluck('id');
 
-                dd('Creating DetailTransaction:', $totalPrice, $products->first(), $trans_id->first());
 
+                // Debugging
+                // dd('Creating DetailTransaction:', $totalPrice, $products->first(), $trans_id->first());
+
+
+                
                 DetailTransactions::create([
                     'total_amount' => (int)$totalPrice,
                     'product_id' => $products->first(),
-                    'transaction_id' => $trans_id->first(),
-                    'user_id' => Auth::user()->id
+                    'transaction_id' => $change_paid_id,
+                    'user_id' => $user_id,
                 ]);
-            }
+            // }
         }
     }
 }
