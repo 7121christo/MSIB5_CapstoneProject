@@ -12,13 +12,14 @@ class DetailTransactions extends Model
     protected $fillable = [
         'order_id',
         'product_id',
+        'transaction_id',
         'user_id',
         'total_amount'
     ];
 
     public function order()
     {
-        return $this->belongsTo(Transactions::class);
+        return $this->belongsTo(Transactions::class, 'order_id');
     }
 
     public function user()
@@ -30,4 +31,8 @@ class DetailTransactions extends Model
     {
         return $this->belongsTo(Products::class);
     }
+    public function transaction()
+{
+    return $this->belongsTo(Transactions::class, 'transaction_id');
+}
 }
