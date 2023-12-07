@@ -49,11 +49,14 @@ class TransactionsController extends Controller
 
     if ($hashed == $request->signature_key) {
         if ($request->transaction_status == 'capture') {
-            $change = Transactions::find($request->id);
+            // $change = Transactions::find($request->order_id);
+            $change = Transactions::where('order_id', $request->order_id)->get();
+            $change_paid = $change->pluck('is_paid')->first();
 
-            if ($change) {
-                $change->is_paid = 'Paid';
-                $change->save();
+            // if ($change) {
+                // $change->update(['is_paid' => 'Paid']);
+                $change_paid = 'Paid';
+                $change_paid->save();
 
                 // Debugging
                 dd('Change saved:', $change);
@@ -76,7 +79,7 @@ class TransactionsController extends Controller
                     'transaction_id' => $trans_id->first(),
                     'user_id' => Auth::user()->id
                 ]);
-            }
+            // }
         }
     }
 }

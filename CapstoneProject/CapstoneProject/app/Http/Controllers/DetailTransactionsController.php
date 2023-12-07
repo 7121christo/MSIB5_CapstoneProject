@@ -62,25 +62,21 @@ class DetailTransactionsController extends Controller
         $totalPrice += $productTotalPrice;
     }
 
-    $transaction = Transactions::create([
-        'invoice' => $user->name,
-        'is_paid' => 'Unpaid',
-        'user_id' => $user->id,
-    ]);
-    $transactionId = $transaction->id;
-    $userId = $transaction->user_id;
+    
+ 
+    // $userId = $transaction->user_id;
 
     // $transaction = Transactions::find($transactionId);
     // $transaction->is_paid = 'Paid';
     // $transaction->save();
-    Transactions::where('id',$transactionId)->update(['is_paid' => 'Paid']);
+    // Transactions::where('id',$transactionId)->update(['is_paid' => 'Paid']);
 
-    DetailTransactions::create([
-        'total_amount' => (int)$totalPrice,
-        'product_id' => $cartItem->product_id,
-        'transaction_id' => $transactionId,
-        'user_id' => $userId
-    ]);
+    // DetailTransactions::create([
+    //     'total_amount' => (int)$totalPrice,
+    //     'product_id' => $cartItem->product_id,
+    //     'transaction_id' => $transactionId,
+    //     'user_id' => $userId
+    // ]);
 
     // Transactions::where('id', $transactionId)->update(['is_paid' => 'Paid']);
 
@@ -107,12 +103,14 @@ class DetailTransactionsController extends Controller
 
     $cart_id = $carts->pluck('id')->first();
 
-$order_id = "user{$user_id}_cart{$cart_id}_" . Str::uuid();
+    $order_id = "user{$user_id}_cart{$cart_id}_" . Str::uuid();
+
 
 
 
     $params = array(
         'transaction_details' => array(
+        
             'order_id' => $order_id,
             'gross_amount' => (int)$totalPrice,
             'currency' => 'IDR',
@@ -121,14 +119,28 @@ $order_id = "user{$user_id}_cart{$cart_id}_" . Str::uuid();
             'name' => $user->name,
             'phone' => $user->phone,
         ),
+        'callbacks' => [
+            'finish' => "http://127.0.0.1:8000/cart",
+        ]
     );
 
-
+    
 
     $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-    // dd($snapToken);
+    $transaction = Transactions::create([
+        'invoice' => $user->name,
+        'is_paid' => 'Unpaid',
+        'user_id' => $user->id,
+        'order_id' => $order_id,
+    ]);
 
+    
+    // $change = Transactions::find($user_id);
+    // $change = Transactions::where('order_id', $order_id)->get();
+    // $change_paid = $change->pluck('is_paid')->first();
+  
+    // dd($change_paid);
 
     return view('checkout', compact('snapToken','carts', 'totalPrice'));
 
