@@ -66,10 +66,6 @@ class DetailTransactionsController extends Controller
  
     // $userId = $transaction->user_id;
 
-    // $transaction = Transactions::find($transactionId);
-    // $transaction->is_paid = 'Paid';
-    // $transaction->save();
-    // Transactions::where('id',$transactionId)->update(['is_paid' => 'Paid']);
 
     // DetailTransactions::create([
     //     'total_amount' => (int)$totalPrice,
@@ -77,13 +73,6 @@ class DetailTransactionsController extends Controller
     //     'transaction_id' => $transactionId,
     //     'user_id' => $userId
     // ]);
-
-    // Transactions::where('id', $transactionId)->update(['is_paid' => 'Paid']);
-
-    // Transactions::where('id',$transactionId)->update(['is_paid' => 'Paid']);
-    // $transaction = Transactions::find($transactionId);
-    // $transaction->is_paid = 'Paid';
-    // $transaction->save();
 
     // Set your Merchant Server Key
     \Midtrans\Config::$serverKey = config('midtrans.server_key');
@@ -98,14 +87,11 @@ class DetailTransactionsController extends Controller
     $carts = Carts::where('user_id', $user_id)->get();
     $user= Auth::user();
 
-
     $totalPrice = max(round($carts->sum('total_price')), 0.01);
 
     $cart_id = $carts->pluck('id')->first();
 
     $order_id = "user{$user_id}_cart{$cart_id}_" . Str::uuid();
-
-
 
 
     $params = array(
@@ -124,7 +110,6 @@ class DetailTransactionsController extends Controller
         ]
     );
 
-    
 
     $snapToken = \Midtrans\Snap::getSnapToken($params);
 
@@ -144,10 +129,7 @@ class DetailTransactionsController extends Controller
     // $order = Transactions::find($change_paid);
     // $order->update(['is_paid' => 'Paid']);
 
-    // dd($order);
 
     return view('checkout', compact('snapToken','carts', 'totalPrice'));
-
-
     }
 }

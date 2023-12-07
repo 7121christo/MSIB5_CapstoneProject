@@ -59,8 +59,10 @@ class TransactionsController extends Controller
                 
                
 
+
                 // Debugging
                 // dd('Change saved:', $change);
+
 
                 $user_id =  $change->pluck('user_id')->first();
                 $carts = Carts::where('user_id', $user_id)->get();
@@ -71,8 +73,10 @@ class TransactionsController extends Controller
                 $products = Carts::pluck('product_id');
                 $trans_id = Transactions::pluck('id');
 
+
                 // Debugging
                 // dd('Creating DetailTransaction:', $totalPrice, $products->first(), $trans_id->first());
+
 
                 
                 DetailTransactions::create([
@@ -85,7 +89,4 @@ class TransactionsController extends Controller
         }
     }
 }
-
-    
-
 }
