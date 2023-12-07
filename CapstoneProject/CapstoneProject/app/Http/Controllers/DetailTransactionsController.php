@@ -137,10 +137,14 @@ class DetailTransactionsController extends Controller
 
     
     // $change = Transactions::find($user_id);
+
     // $change = Transactions::where('order_id', $order_id)->get();
-    // $change_paid = $change->pluck('is_paid')->first();
+    // $change_paid = $change->pluck('id')->first();
   
-    // dd($change_paid);
+    // $order = Transactions::find($change_paid);
+    // $order->update(['is_paid' => 'Paid']);
+
+    // dd($order);
 
     return view('checkout', compact('snapToken','carts', 'totalPrice'));
 
