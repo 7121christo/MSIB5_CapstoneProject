@@ -174,6 +174,15 @@
             
             
         }
+
+        .shop-detail .head{
+            font-family: 'Inter', sans-serif;
+            color: black;
+            font-size: 36px;
+            font-weight: 700;
+            margin: 100px 0 100px 30px;
+            
+        }
         @media (min-width: 576px) { 
             .register{
             margin: 50px 0 0 100px;

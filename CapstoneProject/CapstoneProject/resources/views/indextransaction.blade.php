@@ -1,6 +1,9 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
+@extends('dashboard')
 
 @section('content')
+<h2 class="mb-3" style="font-weight: 800; font-size: 3rem">Order List</h2>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -18,7 +21,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($orders as $order)
-                                
+
                                         <td>{{ $order->id }}</td>
                                         <td>{{ $order->user->name }}</td>
                                         <td>{{ $order->is_paid }}</td>
