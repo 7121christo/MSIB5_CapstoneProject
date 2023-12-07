@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container shop-detail" style="margin-bottom: 200px;">
+        <h1 class="head">Product Details</h1>
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Product Detail') }}</div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-around">
+            <div class="col-md-10">
+                <div class="card pt-5 pb-5">
+                    
+                    <div class="card-body ">
+                        <div class="d-flex justify-content-evenly ">
                             <div class="">
-                                <img src="{{ asset('images/products/'. $product->image) }}" alt="image" width="200px" style="height: 200; padding-right:20px;">
+                                <img src="{{ asset('images/products/'. $product->image) }}" alt="image" width="400px" style="height: 400;" class="rounded img-thumbnail ">
                             </div>
                             <div class="">
                                 <h1>{{ $product->name }}</h1>
@@ -24,7 +25,7 @@
                                         <input type="number" class="form-control" aria-describedby="basic-addon2"
                                                 name="amount" value=1 min=1 max={{ $product->stock }}>
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-outline-secondary" type="submit">Add to Cart</button>
+                                                    <button class="btn btn-outline-success" type="submit">Add to Cart</button>
                                                 </div>
                                             </div>
                                     </form>

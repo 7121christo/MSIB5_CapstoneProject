@@ -25,8 +25,8 @@
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="{{route('profile')}}" class="nav-link p-0 text-body-secondary">My Account</a></li>
           <li class="nav-item mb-2"><a href="{{route('register')}}" class="nav-link p-0 text-body-secondary">Login/Register</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Cart</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Shop</a></li>
+          <li class="nav-item mb-2"><a href="{{route('cart.index')}}" class="nav-link p-0 text-body-secondary">Cart</a></li>
+          <li class="nav-item mb-2"><a href="{{route('indexshop')}}" class="nav-link p-0 text-body-secondary">Shop</a></li>
         </ul>
       </div>
   
