@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('invoice')->nullable();
-            $table->boolean('is_paid')->default(false);
+            $table->enum('is_paid', ['Paid', 'Unpaid']);
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

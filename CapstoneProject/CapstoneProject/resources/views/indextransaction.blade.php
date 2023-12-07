@@ -24,10 +24,9 @@
 
                                         <td>{{ $order->id }}</td>
                                         <td>{{ $order->user->name }}</td>
-                                        <td>@if ($order->is_paid == 1)
-                                            <p class="card-text">Paid</p>
-                                        @else
-                                            <p class="card-text">Unpaid</p>@endif</td>
+                                        <td>{{ $order->is_paid }}</td>
+
+
                                     </tr>
 
 
