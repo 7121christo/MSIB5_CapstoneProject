@@ -67,7 +67,7 @@
                 <div class="row justify-content-center text-center">
                   <div class="col lis">
                       <td>Total </td>
-                      <td> : {{ number_format($totalPrice,2,",",".") }}</td>
+                      <td> : Rp{{ number_format($totalPrice,2,",",".") }}</td>
                   </div>
                 </div>
   
@@ -101,7 +101,9 @@
             // embedId: 'snap-container',
             onSuccess: function (result) {
               /* You may add your own implementation here */
-              alert("payment success!"); console.log(result);
+              // alert("payment success!"); 
+              window.location.href = '/invoice/{{$transaction->id}}'
+              console.log(result);
 
             },
             onPending: function (result) {

@@ -89,4 +89,13 @@ class TransactionsController extends Controller
         }
     }
 }
+
+public function invoice($id){
+
+    $order = Transactions::find($id);
+    $detail = DetailTransactions::where('transaction_id', $id)->get();
+    $total=$detail[0]->total_amount;
+   
+    return view('invoice', compact('order','total'));
+}
 }

@@ -136,6 +136,6 @@ class DetailTransactionsController extends Controller
     // $order->update(['is_paid' => 'Paid']);
 
 
-    return view('checkout', compact('snapToken','carts', 'totalPrice'));
+    return view('checkout', compact('snapToken','carts', 'totalPrice','transaction'));
     }
 }
