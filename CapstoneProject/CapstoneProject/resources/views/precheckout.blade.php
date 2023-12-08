@@ -7,23 +7,22 @@
     <div class="row justify-content-start ">
         <div class="col-8 col-md register justify-content-start ">
             <form method="POST" action="{{ route('precheckout.update') }}">
-               
+
               @csrf
-              
               <p class="navlist-font text-center justify-content-center" style="margin-top: 25px;"> </p>
-                
+
               <div class="row mb-1 justify-content-start text-start">
-    
+
                 <div class="col-md-8">
                     <label for="name" class="form-label ">{{ __('Name') }}</label>
                 </div>
             </div>
               <div class="row mb-4 justify-content-start text-start">
                   {{-- <label for="name" class="col-form-label ">{{ __('Name') }}</label> --}}
-    
+
                   <div class="col-md-12">
                       <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ Auth::user()->name }}" required autocomplete="name" autofocus>
-    
+
                       @error('name')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -31,20 +30,20 @@
                       @enderror
                   </div>
               </div>
-    
+
               <div class="row mb-1 justify-content-startr text-start">
-    
+
                 <div class="col-md-8">
                     <label for="phone" class="form-label ">{{ __('Phone') }}</label>
                 </div>
             </div>
-    
+
               <div class="row mb-4 justify-content-start" >
                   {{-- <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label> --}}
-    
+
                   <div class="col-md-12">
                       <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Phone Number" value="{{ Auth::user()->phone }}">
-    
+
                       @error('phone')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -52,20 +51,20 @@
                       @enderror
                   </div>
               </div>
-    
+
               <div class="row mb-1 justify-content-start text-start">
-    
+
                 <div class="col-md-8">
                     <label for="address" class="form-label ">{{ __('Address') }}</label>
                 </div>
             </div>
-    
+
               <div class="row mb-4 justify-content-start">
                   {{-- <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label> --}}
-    
+
                   <div class="col-md-12">
                       <textarea id="address"  class="form-control @error('address') is-invalid @enderror" name="address" placeholder="Address" value="{{ Auth::user()->address }}" rows="5"> {{ Auth::user()->address }}</textarea>
-    
+
                       @error('address')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -73,9 +72,9 @@
                       @enderror
                   </div>
               </div>
-    
-              
-    
+
+
+
               <div class="row mb-4 justify-content-center">
                   <div class="col-md-8 d-grid gap-2">
                       <button type="submit" class="btn btn-danger btn-lg text-dark form-button border ">
@@ -83,7 +82,7 @@
                       </button>
                   </div>
               </div>
-             
+
               @if (session()->has('checkout_update'))
                     <div class="row mb-4 justify-content-center">
                         <div class="col-md-8">
@@ -95,7 +94,7 @@
                     </div>
                @endif
                <div class="row mb-4">
-                
+
             </div>
           </form>
           </div>
@@ -105,7 +104,7 @@
                 <div class="col-md-8">
                     Product
                 </div>
-                
+
                 <div class="col-md-4 text-center">
                     Quantity
                 </div>
@@ -121,8 +120,8 @@
                 <div class="col-md-4 d-flex justify-content-center">
                     {{$cartItem->amount}}
                 </div>
-                
-        
+
+
             </div>
         </div>
         @endforeach
@@ -167,5 +166,5 @@
       </div>
     </div>
 </div>
-    
+
 @endsection

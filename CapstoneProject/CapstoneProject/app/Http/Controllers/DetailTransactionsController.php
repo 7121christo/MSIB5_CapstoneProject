@@ -38,13 +38,12 @@ class DetailTransactionsController extends Controller
         'user_id' => $user->id,
     ]);
 
-    dd($transaction);
+    //dd($transaction);
 
     return view('checkout', compact('user', 'cartItems', 'totalAmount', 'totalPrice'));
 }
 
     public function precheckout(){
-
         $user= Auth::user();
         $cartItems = Carts::where('user_id', $user->id)->get();
         $totalPrice = max(round($cartItems->sum('total_price')), 0.01);
@@ -53,8 +52,6 @@ class DetailTransactionsController extends Controller
     public function checkout(){
         $user = Auth::user();
         $cartItems = Carts::with('product')->get();
-        $data = Transactions::all()->first();
-        // dd($data);
 
         $totalAmount = 0;
         $totalPrice = 0;
@@ -68,17 +65,16 @@ class DetailTransactionsController extends Controller
         $totalPrice += $productTotalPrice;
     }
 
-    
- 
-    // $userId = $transaction->user_id;
-
-
-    // DetailTransactions::create([
-    //     'total_amount' => (int)$totalPrice,
-    //     'product_id' => $cartItem->product_id,
-    //     'transaction_id' => $transactionId,
-    //     'user_id' => $userId
-    // ]);
+    $transaction = Transactions::create([
+        'invoice' => $user->name,
+        'is_paid' => 'Unpaid',
+        'user_id' => $user->id,
+    ]);
+    session(['transactionId' => $transaction->id]);
+    session(['userId' => $transaction->user_id]);
+    session(['cartItems' => $cartItems]);
+    session(['totalPrice' => $totalPrice]);
+    // session(['totalAmount' => $totalAmount]);
 
     // Set your Merchant Server Key
     \Midtrans\Config::$serverKey = config('midtrans.server_key');
@@ -99,10 +95,8 @@ class DetailTransactionsController extends Controller
 
     $order_id = "user{$user_id}_cart{$cart_id}_" . Str::uuid();
 
-
     $params = array(
         'transaction_details' => array(
-        
             'order_id' => $order_id,
             'gross_amount' => (int)$totalPrice,
             'currency' => 'IDR',
@@ -111,31 +105,46 @@ class DetailTransactionsController extends Controller
             'name' => $user->name,
             'phone' => $user->phone,
         ),
-        'callbacks' => [
-            'finish' => "http://127.0.0.1:8000/cart",
-        ]
     );
-
 
     $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-    $transaction = Transactions::create([
-        'invoice' => $user->name,
-        'is_paid' => 'Unpaid',
-        'user_id' => $user->id,
-        'order_id' => $order_id,
-    ]);
+    // dd($snapToken);
 
-    
-    // $change = Transactions::find($user_id);
+    return view('checkout', compact('snapToken','carts', 'totalPrice'));
 
-    // $change = Transactions::where('order_id', $order_id)->get();
-    // $change_paid = $change->pluck('id')->first();
-  
-    // $order = Transactions::find($change_paid);
-    // $order->update(['is_paid' => 'Paid']);
+    }
 
+    public function handlePayment(Request $request) {
+        $status = $request->input('status');
 
-    return view('checkout', compact('snapToken','carts', 'totalPrice','transaction'));
+        $transactionId = session('transactionId');
+        $userId = session('userId');
+        $cartItems = session('cartItems',[]);
+        $totalPrice = session('totalPrice');
+        // $totalAmount = session('totalAmount');
+
+        if ($status === 'success') {
+            foreach ($cartItems as $cartItem) {
+                if (is_array($cartItem) || is_object($cartItem)) {
+                    DetailTransactions::create([
+                                'total_amount' => $cartItem->total_price,
+                                'product_id' => $cartItem->product_id,
+                                'transaction_id' =>  $transactionId,
+                                'user_id' =>   $userId
+                    ]);
+                }
+            }
+
+            Transactions::where('id',$transactionId)->update(['is_paid' => 'Paid']);
+            Carts::where('product_id',$cartItem->product_id)->delete();
+
+            $product = Products::find($cartItem->product_id);
+                if ($product) {
+                    $newStock = $product->stock - $cartItem->amount;
+                    $product->update(['stock' => $newStock]);
+                }
+        }
+        return response()->json(['message' => 'Payment data received successfully']);
     }
 }

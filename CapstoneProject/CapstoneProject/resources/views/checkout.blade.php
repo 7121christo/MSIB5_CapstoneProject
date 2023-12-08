@@ -14,39 +14,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
-           
-
         }
 
         #snap-container {
             padding: 20px;
             z-index: 1;
             text-align: center;
-            
-           margin-left:
-
-
+            margin-left:
         }
     </style>
 
-
-
     <div class="container billing">
       <div class="row justify-content-center text-center">
-        
+
           <h1>Payment Page</h1>
 
           <div class="card col col-md-4 border-2" style="width: 30%;">
               {{-- <img src="{{ asset('assets/img/tas.jpg') }}" class="card-img-top" alt="..."> --}}
               <div class="card-body justify-content-center text-center">
                 <h5 class="card-title">Order Detail</h5>
-  
+
                 <div class="row justify-content-center text-center">
                   <div class="col lis">
                       <td>Name</td>
                       <td> : {{ Auth::user()->name }}</td>
                   </div>
-                </div>  
+                </div>
                 <div class="row justify-content-center text-center">
                   <div class="col lis">
                       <td>Phone</td>
@@ -59,7 +52,7 @@
                       <td> : {{ Auth::user()->address }}</td>
                   </div>
                 </div>
-  
+
                   {{-- <tr>
                       <td>Qty</td>
                       <td> : {{ $totalAmount }}</td>
@@ -70,21 +63,11 @@
                       <td> : Rp{{ number_format($totalPrice,2,",",".") }}</td>
                   </div>
                 </div>
-  
-  
-  
-  
                 <button class="btn btn-success mt-3" id="pay-button">Pay Now</button>
-  
               </div>
             </div>
-        
       </div>
-        
     </div>
-
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
-
     <div class="center-container">
         <div class="centered-content">
             <div id="snap-container"></div>
@@ -101,7 +84,7 @@
             // embedId: 'snap-container',
             onSuccess: function (result) {
               /* You may add your own implementation here */
-              // alert("payment success!"); 
+              // alert("payment success!");
               window.location.href = '/invoice/{{$transaction->id}}'
               console.log(result);
 

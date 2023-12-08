@@ -16,7 +16,6 @@ class ProductsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
     }
 
     public function indexshop()
@@ -41,7 +40,6 @@ class ProductsController extends Controller
         {
             return redirect()->route('home');
         }
-
         return view('products.create');
     }
 
@@ -82,7 +80,6 @@ class ProductsController extends Controller
 
     public function show(string $id)
     {
-
         $product = Products::find($id);
         return view('detailshop', compact('product'));
     }
@@ -90,11 +87,7 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
-
+    public function edit(string $id){}
 
     public function update(Request $request, Products $products, string $id)
 
@@ -131,7 +124,6 @@ class ProductsController extends Controller
 
     public function destroy(string $id)
     {
-        //
         $products = Products::findOrFail($id);
         $products->delete();
         return redirect()->route('products');

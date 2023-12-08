@@ -3,7 +3,7 @@
 @section('content')
 <div class="container billing">
   <div class="row justify-content-center text-center">
-    
+
       <h1>Invoice</h1>
 
       <div class="card col col-md-4 border-2" style="width: 30%;">
@@ -16,7 +16,7 @@
                   <td>Name</td>
                   <td> : {{ Auth::user()->name }}</td>
               </div>
-            </div>  
+            </div>
             <div class="row justify-content-center text-center">
               <div class="col lis">
                   <td>Phone</td>
@@ -29,7 +29,6 @@
                   <td> : {{ Auth::user()->address }}</td>
               </div>
             </div>
-
               {{-- <tr>
                   <td>Qty</td>
                   <td> : {{ $totalAmount }}</td>
@@ -54,9 +53,9 @@
 
           </div>
         </div>
-    
+
   </div>
-    
+
 </div>
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}

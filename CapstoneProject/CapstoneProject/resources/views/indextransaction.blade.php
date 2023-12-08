@@ -21,24 +21,10 @@
                             </thead>
                             <tbody>
                                 @foreach ($orders as $order)
-
                                         <td>{{ $order->id }}</td>
                                         <td>{{ $order->user->name }}</td>
                                         <td>{{ $order->is_paid }}</td>
-
-
                                     </tr>
-
-
-                                    {{-- <a href="{{ route('show_order', $order) }}">
-                                        <h5 class="card-title">Order ID {{ $order->id }}</h5>
-                                    </a>
-                                    <h6 class="card-subtitle mb-2 text-muted">By {{ $order->user->name }}</h6>
-
-                                    @if ($order->is_paid == 1)
-                                        <p class="card-text">Paid</p>
-                                    @else
-                                        <p class="card-text">Unpaid</p> --}}
                                         @if ($order->payment_receipt)
                                             <div class="d-flex flew-row justify-content-around">
                                                 <a href="{{ url('storage/' . $order->payment_receipt) }} "
@@ -51,9 +37,7 @@
                                                     </form>
                                                 @endif
                                             </div>
-                                        {{-- @endif
-                                    @endif --}}
-@endif
+                                     @endif
                         @endforeach
                             </tbody>
                         </table>
