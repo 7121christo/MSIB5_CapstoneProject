@@ -18,6 +18,10 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    {{-- slick --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
     
 
     <!-- Font Awesome -->
@@ -80,7 +84,8 @@
             
         }
         .collection{
-            margin: 600px 0 300px 0;
+            margin: 400px 0 300px 0;
+            padding: 50px -200px 0px -200px;
         }
         .collection h1{
             
@@ -183,6 +188,47 @@
             margin: 100px 0 100px 30px;
             
         }
+
+        .billing h1{
+            font-family: 'Inter', sans-serif;
+            color: black;
+            font-size: 36px;
+            font-weight: 500;
+            margin: 100px 0 50px 0;
+            
+        }
+
+        .billing .lis{
+            font-family: 'Inter', sans-serif;
+            color: black;
+            font-size: 20px;
+            font-weight: 500;
+            margin: 5px;
+            
+        }
+
+        .billing h5{
+            font-family: 'Inter', sans-serif;
+            color: black;
+            font-size: 28px;
+            font-weight: 500;
+    
+            
+        }
+
+        .items{
+        width:90%;
+        margin:0px auto;
+        margin-top: 100px;
+        }
+        .slick-slide{
+        margin:10px;
+        }
+        .slick-slide img{
+        width:100%;
+        height: 300;
+        border: 0px solid #fff;
+        }
         @media (min-width: 576px) { 
             .register{
             margin: 50px 0 0 100px;
@@ -210,6 +256,17 @@
 
     <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{ asset('assets/dist/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        $('.items').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 200,
+            });
+    </script>
 
     
 

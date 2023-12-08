@@ -40,4 +40,16 @@ class ProfileController extends Controller
         
         return redirect()->route('profile')->with('profile_update', 'Profile updated!');
     }
+
+    public function updateCheckout(ProfileRequest $request)
+    {
+        $input=$request->all();
+        $user=Auth::user();
+        $user->name=$input['name'];
+        $user->phone=$input['phone'];
+        $user->address=$input['address'];
+        $user->save();
+        
+        return redirect()->route('precheckout')->with('checkout_update', 'Profile details updated!');
+    }
 }
