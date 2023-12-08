@@ -43,7 +43,13 @@ class DetailTransactionsController extends Controller
     return view('checkout', compact('user', 'cartItems', 'totalAmount', 'totalPrice'));
 }
 
+    public function precheckout(){
 
+        $user= Auth::user();
+        $cartItems = Carts::where('user_id', $user->id)->get();
+        $totalPrice = max(round($cartItems->sum('total_price')), 0.01);
+        return view('precheckout', compact ('user', 'cartItems', 'totalPrice'));
+    }
     public function checkout(){
         $user = Auth::user();
         $cartItems = Carts::with('product')->get();

@@ -1,6 +1,6 @@
 {{-- Header --}}
 
-<nav class="navbar navbar-expand-lg  bg-white mt-3">
+<nav class="navbar navbar-expand-lg  bg-white mt-3 sticky-top">
     <div class="container">
       <a class="navbar-brand nav-font fs-3 mb-3" href="">Coconut Husk Bag</a>
       <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

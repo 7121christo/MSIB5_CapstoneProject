@@ -19,33 +19,49 @@
     <div class="collection justify-content-center text-center">
         <h1>Collection 2023</h1>
         <div class="row justify-content-center">
-            <div class="col-10 mt-3">
-                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="{{asset('assets/img/bag_img.jpg')}}" class="d-block w-100 rounded" style="height:500; width: 568;" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="{{asset('assets/img/bag2_img.jpg')}}" class="d-block w-100 rounded" style="height:500; width: 568;" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="{{asset('assets/img/bag3_img.jpg')}}" class="d-block w-100 rounded" style="height:500; width: 568;" alt="...">
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div>
+            <div class="col-12 mt-3">
+                <div class="items">
+                    <div><img src="{{asset('assets/img/bag_img.jpg')}}"></div>
+                    <div><img src="{{asset('assets/img/bag2_img.jpg')}}"></div>
+                    <div><img src="{{asset('assets/img/bag3_img.jpg')}}"></div>
+                    <div><img src="{{asset('assets/img/bag 4-2.jpg')}}"></div>
+                    <div><img src="{{asset('assets/img/bag 5.jpg')}}"></div>
+                </div>
             </div>
             
         </div>
+
+        {{-- height:500; width: 568; --}}
     </div>
+
+    
 </div>
+
+
+
+
+
+{{-- <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active ">
+        <img src="{{asset('assets/img/bag_img.jpg')}}" class="d-block w-100 rounded" style="height:300; width: 300;" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{asset('assets/img/bag2_img.jpg')}}" class="d-block w-100 rounded" style="height:300; width: 300;" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{asset('assets/img/bag3_img.jpg')}}" class="d-block w-100 rounded" style="height:300; width: 300;" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> --}}
 {{-- <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">

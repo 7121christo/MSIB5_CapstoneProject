@@ -63,6 +63,9 @@ Route::get('profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 //transaction
+Route::post('/precheckout', [DetailTransactionsController::class, 'precheckout'])->name('precheckout');
+Route::post('/precheckout/update', [ProfileController::class, 'updateCheckout'])->name('precheckout.update');
+
 Route::get('/order/{order}', [TransactionsController::class, 'show_order'])->name('show_order');
 
 Route::post('/transactions/{transactions}/pay', [TransactionsController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
