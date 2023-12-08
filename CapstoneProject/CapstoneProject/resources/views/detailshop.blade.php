@@ -8,11 +8,11 @@
                 <div class="card pt-5 pb-5">
                     
                     <div class="card-body ">
-                        <div class="d-flex justify-content-evenly ">
-                            <div class="">
+                        <div class="row d-flex justify-content-evenly ">
+                            <div class="col-5">
                                 <img src="{{ asset('images/products/'. $product->image) }}" alt="image" width="400px" style="height: 400;" class="rounded img-thumbnail ">
                             </div>
-                            <div class="">
+                            <div class="col-7">
                                 <h1>{{ $product->name }}</h1>
                                 <h6>{{ $product->description }}</h6>
                                 <h3>Rp{{ $product->price }}</h3>
