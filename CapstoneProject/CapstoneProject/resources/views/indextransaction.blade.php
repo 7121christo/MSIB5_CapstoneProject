@@ -1,5 +1,11 @@
 {{-- @extends('layouts.app') --}}
-@extends('dashboard')
+
+    @extends('dashboard')   
+
+    {{-- @extends('layouts.app')    --}}
+
+
+
 
 @section('content')
 <h2 class="mb-3" style="font-weight: 800; font-size: 3rem">Order List</h2>
@@ -17,15 +23,16 @@
                                     <th>Order ID</th>
                                     <th>Name</th>
                                     <th>Status</th>
+                                    <th>Invoice</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($orders as $order)
 
-                                        <td>{{ $order->id }}</td>
+                                        <td>{{ $order->order_id }}</td>
                                         <td>{{ $order->user->name }}</td>
                                         <td>{{ $order->is_paid }}</td>
-
+                                        <td><a href="{{route('invoice', $order->id)}}">View</a></td>
 
                                     </tr>
 

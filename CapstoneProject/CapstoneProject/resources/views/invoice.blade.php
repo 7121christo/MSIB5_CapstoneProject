@@ -51,7 +51,7 @@
 
 
             <a href="{{route('indexshop')}}"><button class="btn btn-success mt-3" id="pay-button">Back to Shop</button></a>
-
+            <a href="{{route('indextransaction')}}"><button class="btn btn-success mt-3" id="pay-button">See Transaction</button></a>
           </div>
         </div>
     
