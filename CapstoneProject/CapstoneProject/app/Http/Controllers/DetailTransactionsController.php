@@ -69,6 +69,11 @@ class DetailTransactionsController extends Controller
     }
 
     
+    
+    
+
+    
+    
  
     // $userId = $transaction->user_id;
 
@@ -92,6 +97,8 @@ class DetailTransactionsController extends Controller
     $user_id = Auth::id();
     $carts = Carts::where('user_id', $user_id)->get();
     $user= Auth::user();
+
+    session(['cartItems' => $carts]);
 
     $totalPrice = max(round($carts->sum('total_price')), 0.01);
 
@@ -138,4 +145,42 @@ class DetailTransactionsController extends Controller
 
     return view('checkout', compact('snapToken','carts', 'totalPrice','transaction'));
     }
+
+    // public function handlePayment(Request $request) {
+    //     $status = $request->input('status');
+
+    //     // $transactionId = session('transactionId');
+    //     // $userId = session('userId');
+    //     $cartItems = session('cartItems',[]);
+    //     // $totalPrice = session('totalPrice');
+    //     // // $totalAmount = session('totalAmount');
+
+    //     // if ($status === 'success') {
+    //     //     foreach ($cartItems as $cartItem) {
+    //     //         if (is_array($cartItem) || is_object($cartItem)) {
+    //     //             DetailTransactions::create([
+    //     //                         'total_amount' => $cartItem->total_price,
+    //     //                         'product_id' => $cartItem->product_id,
+    //     //                         'transaction_id' =>  $transactionId,
+    //     //                         'user_id' =>   $userId
+    //     //             ]);
+    //     //         }
+    //     //     }
+
+    //     //     Transactions::where('id',$transactionId)->update(['is_paid' => 'Paid']);
+    //         // Carts::where('product_id',$cartItem->product_id)->delete();
+
+    //         foreach($cartItems as $cartItem){
+    //             $product = Products::find($cartItem->product_id);
+    //             if ($product) {
+    //             $newStock = $product->stock - $cartItem->amount;
+    //             dd($newStock);
+    //             $product->update(['stock' => $newStock]);
+
+    //         }
+    //         }
+    //     // }
+    //     return response()->json(['message' => 'Payment data received successfully']);
+    // }
 }
+

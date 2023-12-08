@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use App\Models\DetailTransactions;
+use Mockery\Undefined;
+use Symfony\Component\ErrorHandler\Error\UndefinedFunctionError;
 
 
 
@@ -77,6 +79,20 @@ class TransactionsController extends Controller
                 // Debugging
                 // dd('Creating DetailTransaction:', $totalPrice, $products->first(), $trans_id->first());
 
+                // $cartItems = session('cartItems',[]);
+                $cartItems = Carts::where('user_id', $user_id)->get();
+
+                foreach($cartItems as $cartItem){
+                    $product = Products::find($cartItem->product_id);
+                    if ($product) {
+                    $newStock = $product->stock - $cartItem->amount;
+                    $product->update(['stock' => $newStock]);
+                    $prodStock=$product->stock;
+
+                }
+                }
+
+
 
                 
                 DetailTransactions::create([
@@ -85,6 +101,10 @@ class TransactionsController extends Controller
                     'transaction_id' => $change_paid_id,
                     'user_id' => $user_id,
                 ]);
+
+                Carts::where('user_id',$user_id)->delete();
+
+                
             // }
         }
     }
@@ -94,7 +114,14 @@ public function invoice($id){
 
     $order = Transactions::find($id);
     $detail = DetailTransactions::where('transaction_id', $id)->get();
-    $total=$detail[0]->total_amount;
+
+    if($detail!=NULL){
+        $total=$detail[0]->total_amount;
+    }
+    else{
+        $total=000;
+    }
+    
    
     return view('invoice', compact('order','total'));
 }
