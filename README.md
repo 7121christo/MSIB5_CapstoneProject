@@ -7,10 +7,9 @@ Deskripsi singkat aplikasi: Website untuk memperkenalkan produk Coconut Husk Bag
 
 Daftar anggota:
 1. Christophorus Adyatma W.S.N. (PM) 
-2. Ananda Feri Setyawan
-3. Marcellinus Aditya V.D.
-4. Ahmad Rizky Febianto 
-5. Aditya Ramadhan
+2. Marcellinus Aditya V.D.
+3. Ahmad Rizky Febianto 
+4. Aditya Ramadhan
 
 Fitur:
 1. Content Management System (CMS)
